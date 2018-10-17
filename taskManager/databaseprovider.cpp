@@ -17,7 +17,7 @@ DatabaseProvider::~DatabaseProvider()
 
 int DatabaseProvider::initDB() {
     LOG_INFO("Begin initDB");
-    if(QDir().mkdir(F_PATH_DB)) {
+    if(!QDir().mkpath(F_PATH_DB)) {
         LOG_DEBUG("Database path create error");
         return -1;
     }

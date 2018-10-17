@@ -66,7 +66,7 @@ void Log::myMessageOutput(QtMsgType type, const QMessageLogContext &context, con
 }
 
 int Log::log_init() {
-    if(QDir().mkdir(F_PATH_LOG)) {
+    if(!QDir().mkpath(F_PATH_LOG)) {
         return -1;
     }
 
