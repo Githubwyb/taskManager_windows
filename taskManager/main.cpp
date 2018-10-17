@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "init.h"
+#include "log.h"
 
 #include <QApplication>
 #include <QMessageBox>
@@ -11,6 +12,7 @@ int main(int argc, char *argv[])
         QMessageBox::critical(nullptr, "出错", "程序初始化失败!");
         return -1;
     }
+
     MainWindow w;
     w.show();
 
