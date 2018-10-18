@@ -28,7 +28,11 @@ SOURCES += \
         mainwindow.cpp \
     init.cpp \
     databaseprovider.cpp \
-    log.cpp
+    log.cpp \
+    SQLBuilder.cpp \
+    accountmanager.cpp \
+    account.cpp \
+    utils.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,7 +41,11 @@ HEADERS += \
     baseinstance.h \
     log.h \
     version.h \
-    constant.h
+    constant.h \
+    SQLBuilder.hpp \
+    accountmanager.h \
+    account.h \
+    utils.h
 
 FORMS += \
         mainwindow.ui

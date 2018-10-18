@@ -9,7 +9,7 @@
 #define _VERSION_H_
 
 #define VERSION_MAJOR   0
-#define VERSION_MINOR   1
+#define VERSION_MINOR   2
 #define VERSION_MICRO   1
 
 #define VERSION_INT(a, b, c) (a << 16 | b << 8 | c)

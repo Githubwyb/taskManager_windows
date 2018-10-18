@@ -10,7 +10,7 @@
 DatabaseProvider::~DatabaseProvider()
 {
     LOG_INFO("~DatabaseProvider()");
-    if (m_pDB != nullptr && m_pDB->isOpen()) {
+    if (isOpen()) {
         m_pDB->close();
     }
 }
@@ -71,4 +71,44 @@ int DatabaseProvider::initDB() {
     LOG_INFO("Create table TM_task success");
 
     return 0;
+}
+
+bool DatabaseProvider::isOpen() {
+    if (m_pDB != nullptr && m_pDB->isOpen()) {
+        return true;
+    }
+
+    return false;
+}
+
+int DatabaseProvider::execute(const QString &sqlCmd) {
+    if (!isOpen()) {
+        LOG_ERROR("Database isn't open");
+        return -1;
+    }
+
+    QSqlQuery sqlQuery(*m_pDB);
+    bool result = sqlQuery.exec(sqlCmd);
+    if (!result) {
+        LOG_ERROR("Exec failed, code %d, %s", sqlQuery.lastError().type(), sqlQuery.lastError().text().toLatin1().data());
+        return -1;
+    }
+
+    return 0;
+}
+
+const std::shared_ptr<QSqlQuery> DatabaseProvider::query(const QString &sqlCmd) {
+    if (!isOpen()) {
+        LOG_ERROR("Database isn't open");
+        return nullptr;
+    }
+
+    QSqlQuery sqlQuery(*m_pDB);
+    bool result = sqlQuery.exec(sqlCmd);
+    if (!result) {
+        LOG_ERROR("Query failed, code %d, %s", sqlQuery.lastError().type(), sqlQuery.lastError().text().toLatin1().data());
+        return nullptr;
+    }
+
+    return std::make_shared<QSqlQuery>(sqlQuery);
 }

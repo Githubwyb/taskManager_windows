@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "init.h"
-#include "log.h"
 
 #include <QApplication>
 #include <QMessageBox>
