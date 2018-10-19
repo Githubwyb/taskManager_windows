@@ -32,7 +32,9 @@ SOURCES += \
     SQLBuilder.cpp \
     accountmanager.cpp \
     account.cpp \
-    utils.cpp
+    utils.cpp \
+    session.cpp \
+    sessionmanager.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,7 +47,9 @@ HEADERS += \
     SQLBuilder.hpp \
     accountmanager.h \
     account.h \
-    utils.h
+    utils.h \
+    session.h \
+    sessionmanager.h
 
 FORMS += \
         mainwindow.ui

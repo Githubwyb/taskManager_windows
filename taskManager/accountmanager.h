@@ -5,17 +5,25 @@
 #include "account.h"
 
 #include <memory>
+#include <vector>
 
 class AccountManager : public BaseInstance<AccountManager>
 {
 public:
+    ~AccountManager();
 
     /*
-     * @function 创建一个账户
+     * @description 创建一个账户
      * @param pAccount 指向account的指针
      * @return 0，成功；其他，错误码
      */
-    int createAccount(const std::shared_ptr<Account> &pAccount);
+    int addAccount(const std::shared_ptr<Account> &pAccount);
+
+    /*
+     * @description 从数据库加载所有账户
+     * @return 指向账户指针组成的列表
+     */
+    std::vector<std::shared_ptr<Account>> getAllAccount();
 
     /*
      * @description 检查是否有可用账户
